@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Risk trends</title>
+   </head>
+   <body>
+      {% extends "template.html" %}
+      {% block content %}
+      <h2> How did the model determine mutual fund risk category? </h2>
+	<div id="model_details">
+	<h3>Model Specifications</h3>
+	<p style="margin-left:40px;margin-right:40px;text-align:left;">Machine learning models learn from historical data; in this case from large amounts of variables associated with each mutual fund. This particular model is constructed to assign risk categories to mutual funds. A mutual fund is recommended to each user based on risk and other relevant answers gathered from the questionnaire. Model specific details are given below.</p>
+	<img id="feature_importance" src="static/images/mf_model_specs.png" style="height:450px;width:1000px;">
+	<img id="feature_importance" src="static/images/mf_distribution.png" style="height:450px;width:1000px;">
+	
+	</div>
+	<br>
+     <div id="feature_importance_box">
+	<h3>Feature Importance </h3>
+	<p style="margin-left:40px;margin-right:40px;text-align:left;">The machine learning model classifies each mutual fund into a risk class. The graph describes the variables that impact the risk decision in decreasing order. Each fund is classified into 5 categories with a unique color. Variables have different magnitude of impact in different classes. Values are calculated by permuting each variables and calculating average impact caused due to change.</p>
+	<img id="feature_importance" src="static/images/mf_feature_importance.png">
+	<br>
+	<p>x axis decribes features, y axis describes average magnitude of impact made on classes.<p>
+     </div>
+	<br>
+	<div id="jitter_plots">
+	<h3>Risk trends</h3>
+	<p style="margin-left:40px;margin-right:40px;text-align:left;">The columns defined in the data are features or variables of the model. Model specifications defined above contain a list of all the variables used by the model to learn. Certain textual data variables have been defined categorically with numbers for the computer to understand patterns within them. Such variables are given in the table below.</p>
+	<img id="risk_trends" style="height:450px;width:800px;" src="static/images/mf_cat_table.png">
+	<p style="margin-left:40px;margin-right:40px;text-align:left;">These graphs depict the trends captured by the model from the data used for training. Variables are arranged in decreasing order of impact on y-axis. Colour of the dots denote high/low magnitude of each value in each variable. The shape and jitter of the plots reflect the distibution of samples. Variable values can impact the decision of class positively or negatively, this is shown on the x-axis.<br>Descriptions of a few variables are given to give you an idea of how to read the graph.</p>
+	<table>
+	<th>Risk Classes</th>
+	<th>Description</th>
+	<tr>
+	<td><img id="risk_trends" style="width:100%;" src="static/images/mf_no_risk_trends.png"></td>
+	<td style="text-align:left;width:300px;padding:15px;"><b>No Risk Class:</b>
+	'Term' shows a pattern detected by the model; that mid term loans generally belong to the No Risk class. While as long term loans impact this decision negatively, as market risk fluctuations are more probable in the long term.
+	</td>
+	</tr>
+	<tr>
+	<td><img style="width:100%;" id="risk_trends" src="static/images/mf_high_risk_trends.png"></td>
+	<td style="text-align:left;width:300px;padding:15px;"><b>High Risk Class:</b>
+	'Term' shows that long term loans generally belong to the High Risk class. High standard deviation, expense ratios and price to earnings ratios also increase the probability of fund being high risk.</td>
+	</tr>
+	<tr><br></tr>
+	<tr>
+	<td><img id="risk_trends" style="width:100%;" src="static/images/mf_likes_risk_trends.png"></td>
+	<td style="text-align:left;width:300px;padding:15px;"><b>Likes Risk/Moderate-High Risk Class:</b>
+	Long term stocks with high price to booking ratios and lower returns pattern detected in stocks that are moderately risky.</td>
+	</tr>
+	<tr>
+	<td><img id="risk_trends" style="width:100%;" src="static/images/mf_low_risk_trends.png"></td>
+	<td style="text-align:left;width:300px;padding:15px;"><b>Low Risk/Moderate-Low Risk Class:</b>
+	Low risk classes seem to have low deviation and sortino/ unnecessary volatility. But they seem to have suddenly started performing well in 3 months.</td>
+	</tr>
+	<tr>
+	<td><img id="risk_trends" style="width:100%;" src="static/images/mf_moderate_risk_trends.png"></td>
+	<td style="text-align:left;width:300px;padding:15px;"><b>Moderate Risk Class:</b>
+	Moderate risk funds seem to have low P/B and P/E ratios but high short term returns.</td>
+	</tr>
+	</table>
+	</div>
+      {% endblock %}
+   </body>
+</html>

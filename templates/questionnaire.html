@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Questionnaire</title>
+   </head>
+   <body>
+      {% extends "template.html" %}
+      {% block content %}
+     <p id = "information-para" style="margin-left:100px;margin-right:100px;text-align:left;"><b>Goal:</b><br>The goal of this experiment is to decode the decision logic of artificially intelligent algorithms. To do so we chose and example robo-advisory system. Machine learning models were designed to perform robo-advisory tasks. This robo-advisor constructs a risk profile based on a questionnaire presented to the users. A recommendation of mutual funds is made to the users based on risk profiles and other preferences. Risk profiles are constructed for each mutual fund using another machine learning model.<br><br><b>Page 1: Questionnaire: </b><br>The questionnaire is a dummy robo-advisory system. Based on the answers you will be assigned a risk score, a risk category or class (out of no risk, low risk, moderate risk, likes risk and high risk). The contribution of your answers in deciding the risk category is given below. Further, mutual fund recommendations are according to your profile are also given.<br><br><b>Page 2: User Risk Trends: </b><br>Machine learning models learn patterns from historical data provided to them. For example, past user preferences and their risk categories were provided to the model. The model analyses the data to find frequently occuring patterns in each risk category. Based on these patterns, models define decision boundaries to help them classify new data provided to it in the future. Details on the model, patterns observed and learnt are provided on this page.<br><br><b>Page 2: Mutual Fund Risk Trends: </b><br>This page describes the second model, which creates a risk profile for the mutual funds.</p>
+	<br>
+	<br>
+      <form method= "POST" action"{{ url_for('questionnaire') }}">
+      <h3> Questionnaire </h3>
+	<br>
+	<br>
+      <table style="text-align:left;">
+      <tr>
+      <td id="column1">
+      {{ form.csrf_token }}
+      {{ form.username.label }}
+      {{ form.username }}
+      <p></p>
+      {{ form.age.label}}
+      {{ form.age }}
+      {% for error in form.age.errors %}
+      <span style="color: #ff6961;">[{{ error }}]</span>
+      {% endfor %}
+      <p></p>
+      {{ form.dependents.label }}
+      {{ form.dependents }}
+      {% for error in form.dependents.errors %}
+      <span style="color: #ff6961;">[{{ error }}]</span>
+      {% endfor %}
+      <p></p>
+      {{ form.annual_income.label }}
+      {{ form.annual_income }}
+      {% for error in form.annual_income.errors %}
+      <span style="color: #ff6961;">[{{ error }}]</span>
+      {% endfor %}
+      <p></p>
+      {{ form.monthly_loans.label }}
+      {{ form.monthly_loans }}
+      {% for error in form.monthly_loans.errors %}
+      <span style="color: #ff6961;">[{{ error }}]</span>
+      {% endfor %}
+      <p></p>
+      {{ form.income_stability.label }}
+      {{ form.income_stability }}
+      {% for error in form.income_stability.errors %}
+      <span style="color: #ff6961;">[{{ error }}]</span>
+      {% endfor %}
+      </td>
+      <td></td>
+      <td id="column2">
+      {{ form.portfolio.label }}
+      {{ form.portfolio }}
+      {% for error in form.portfolio.errors %}
+      <span style="color: #ff6961;">[{{ error }}]</span>
+      {% endfor %}
+      <p></p>
+      {{ form.investment_obj.label }}
+      {{ form.investment_obj }}
+      {% for error in form.investment_obj.errors %}
+      <span style="color: #ff6961;">[{{ error }}]</span>
+      {% endfor %}
+      <p></p>
+      {{ form.duration.label }}
+      {{ form.duration }}
+      {% for error in form.duration.errors %}
+      <span style="color: #ff6961;">[{{ error }}]</span>
+      {% endfor %}
+      <p></p>
+      {{ form.comfort.label }}
+      {{ form.comfort }}
+      {% for error in form.comfort.errors %}
+      <span style="color: #ff6961;">[{{ error }}]</span>
+      {% endfor %}
+      <p></p>
+      {{ form.behaviour.label }}
+      {{ form.behaviour }}
+      {% for error in form.behaviour.errors %}
+      <span style="color: #ff6961;">[{{ error }}]</span>
+      {% endfor %}
+      </td>
+      </tr>
+      </table>
+	<br>
+	<br>
+      <div id="calculate">
+      <input id="calculatebutton" type="submit" value="Calculate">
+	<input type="button" onclick="window.location.href = '{{ url_for('questionnaire') }}';" value="Reset Data"/>
+	<br>
+	<br>
+      </div>
+      </form>
+      <p></p>
+      <div id ="risk_preference">
+	<h3>Risk Preferences</h3>
+	<p> Risk Score:
+	<br>
+	<b>{{ risk_score }}</b></p>
+	<p>Risk Category: <br> <b>{{ risk_cat }} </b></p>
+	<br>
+	<div style="text-align:center;">
+	<p style="text-align:center;"> You are in the <b>{{ risk_cat }}</b> category because of the following impact of your answers on the models decisions.</p>
+	<embed type="image/svg+xml" src={{lime_data|safe}} style="max-width:800px;"/>
+	<br>
+	<p>Positive(blue) and negative (red) impact of variables while making the class decision.</p>
+	</div>
+      </div>
+	<br>
+	<br>
+	<div id="mutual_fund_rec" style="text-align:center;">
+	<h3>Mutual Fund Recommendations</h3>
+	<table id="mf_rec" style="width:60%;padding:7px;">
+	{{data | safe}}
+	</table>
+	</div>
+	<br>
+	<br>
+      {% endblock %}
+   </body>
+</html>

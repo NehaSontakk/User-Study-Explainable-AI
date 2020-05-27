@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Risk trends</title>
+   </head>
+   <body>
+      {% extends "template.html" %}
+      {% block content %}
+      <h2> How did the model determine your risk category? </h2>
+	<div id="model_details">
+	<h3>Model Specifications</h3>
+	<p style="margin-left:40px;margin-right:40px;text-align:left;">Machine learning models learn from historical data; in this case from  answers/variables associated with each person's preferences. A training dataset contains these personal details of a large amount of users. These preferences and risk categories are given to the model and frequently occuring patterns in each risk category are identified. Based on these boundaries defined, the model makes future decisions. This particular model is constructed to assign risk categories to users. Model specific details are given below.</p>
+	<img id="feature_importance" src="static/images/user_model_specs.png" style="height:450px;width:800px;">
+	<img id="feature_importance" src="static/images/user_distribution.png" style="height:450px;width:9000px;">
+	</div>
+	<br>
+     <div id="feature_importance_box">
+	<p style="margin-left:40px;margin-right:40px;text-align:left;">This graph describes the contribution of answers towards determining a risk class/category. This impact is calculated by analysing the change of class caused by changing variable values and averaging it. Each variable contributes towards the decision making logic of the model, used to classify each user into a risk category.</p>
+	<img id="feature_importance" src="static/images/feature_importance.png">
+	<p>X-axis decribes average magnitude of impact made by variable on Y-axis. The colours reflect the importance of that variable on respective class.<p>
+     </div>
+	<br>
+	<div id="jitter_plots">
+	<h3>Risk trends</h3>
+	<p style="margin-left:40px;margin-right:40px;text-align:left;">Machines understand numbers, text based categorical answers are assigned values given in the table below.</p>
+	<img id="risk_trend_table" style="height:450px;width:800px;" src="static/images/cat_table.png">
+	<br>
+	<br>
+	<br>
+	<table>
+	<th>Risk Classes</th>
+	<th>Description</th>
+	<tr>
+	<td><img id="risk_trends" style="width:100%;padding:15px;" src="static/images/no_risk_trends.png"></td>
+	<td style="text-align:left;width:300px;padding:15px;"><b>No Risk Class:</b> From the table above we can see that younger people are assigned a higher value.The trend seen here shows that from the data given to the model, it has learnt that not many young people are in the no risk class.
+
+	</td>
+	</tr>
+	<br>
+	<tr>
+	<td><img id="risk_trends" style="width:100%;padding:15px;" src="static/images/high_risk_trends.png"></td>
+	<td style="text-align:left;width:300px;padding:15px;"><b>High Risk Class:</b> The model observes that higher values of age assigned to the bracket 18-35 years like to take higher risks.<br> High values of dependents assigned to 'No dependents' (refer table above) also contribute to users high risk categorization.</td>
+	</tr>
+	</tr>
+	<tr>
+	<td><img id="risk_trends" style="width:100%;padding:15px;" src="static/images/likes_risk_trends.png"></td>
+	<td style="text-align:left;width:300px;padding:15px;"><b>Likes Risk Class:</b> Mid and high ranged values assigned to age, that is, users 18-35 and 35-55 years (primarily) take moderately-high risks.</td>
+	</tr>
+	<tr>
+	<td><img id="risk_trends" style="width:100%;padding:15px;" src="static/images/low_risk_trends.png"></td>
+	<td style="text-align:left;width:300px;padding:15px;"><b>Low Risk Class:</b>If a user has high values of age, 18-35 years, the probability of user being low risk is reduced.</td>
+	</tr>
+	<tr>
+	<td><img id="risk_trends" style="width:100%;padding:15px;" src="static/images/moderate_risk_trends.png"></td>
+	<td style="text-align:left;width:300px;padding:15px;"><b>Moderate Risk Class:</b> 18-35 years of age with moderate-high number of dependents seem to be prefer being in the moderate risk category.</td>
+	</tr>
+	</table>
+	</div>
+      {% endblock %}
+   </body>
+</html>

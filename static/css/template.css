@@ -1,0 +1,202 @@
+body {
+margin: 0;
+padding: 10px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+color: #444;
+background-color: #fcfcfc;
+}
+
+/*
+* Formatting the header area
+*/
+header {
+padding-top: 25px;
+background-color: #2e5077;
+height: 55px;
+width: 100%;
+opacity: .9;
+margin-bottom: 10px;
+border-radius: 5px;
+box-shadow: 0px 0px 5px 1px #d3d3d3;
+}
+header h1.logo {
+margin: 0;
+font-size: 1.7em;
+color: #fff;
+text-transform: uppercase;
+float: left;
+}
+header h1.logo:hover {
+color: #fff;
+text-decoration: none;
+}
+/*
+* Centering the body content
+*/
+.container {
+width: 1200px;
+margin: 10px;
+padding-left: 20px;
+padding-right: 20px;
+}
+div.questionnaire {
+padding: 10px 0 30px 0;
+background-color: #E6E6FA;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+}
+div.risktrends {
+padding: 10px 0 30px 0;
+background-color: #E6E6FA;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+}
+h2 {
+font-size: 2em;
+margin-top: 40px;
+text-align: center;
+letter-spacing: -1px;
+}
+form {
+margin-left: 35px;
+margin-right: 35px;
+padding: 15px;
+font-size: 0.9em;
+background-color: white;
+border: 1px solid;
+border-color: #e2e2e2;
+border-radius: 5px;
+box-shadow: 0px 0px 5px 3px #e2e2e2;
+}
+h3 {
+font-size: 1.5em;
+font-weight: 100;
+margin-top: 30px;
+text-align: center;
+letter-spacing: -1px;
+color: #999;
+}
+.menu {
+float: right;
+margin-top: 8px;
+}
+.menu li {
+display: inline;
+}
+.menu li + li {
+margin-left: 35px;
+}
+.menu li a {
+color: white;
+text-decoration: underline;
+-webkit-text-decoration-color: white;
+}
+.menu li a:hover {
+background-color: #85a8d0;
+border-radius: 5px;
+border-color: black;
+padding: 6px;
+}
+#risk_preference {
+margin-left: 35px;
+margin-right: 35px;
+font-size: 0.9em;
+padding: 25px;
+background-color: white;
+border: 1px solid;
+border-color: #e2e2e2;
+border-radius: 5px;
+box-shadow: 0px 0px 5px 3px #e2e2e2;
+}
+#user_risk{
+border-collapse: collapse;
+width: 100%;
+}
+#column1{
+font-size: 0.9em;
+padding-left: 75px;
+}
+#column2{
+font-size: 0.9em;
+padding-left: 180px;
+}
+#calculate{
+font-size: 1em;
+text-align: center;
+}
+#information-para{
+padding: 30px;
+font-size:0.9em;
+}
+#feature_importance_box{
+text-align: center;
+margin-left: 35px;
+margin-right: 35px;
+padding: 15px;
+font-size: 0.9em;
+background-color: white;
+border: 1px solid;
+border-color: #e2e2e2;
+border-radius: 5px;
+box-shadow: 0px 0px 5px 3px #e2e2e2;
+}
+#feature_importance{
+max-width: 75%;
+height: auto;
+}
+#jitter_plots{
+text-align: center;
+margin-left: 35px;
+margin-right: 35px;
+padding: 35px;
+font-size: 0.9em;
+background-color: white;
+border: 1px solid;
+border-color: #e2e2e2;
+border-radius: 5px;
+box-shadow: 0px 0px 5px 3px #e2e2e2;
+}
+#model_details{
+margin-left: 35px;
+margin-right: 35px;
+text-align: center;
+padding: 15px;
+font-size: 0.9em;
+background-color: white;
+border: 1px solid;
+border-color: #e2e2e2;
+border-radius: 5px;
+box-shadow: 0px 0px 5px 3px #e2e2e2;
+}
+#model_table{
+
+border-collapse: collapse;
+width: 100%;
+}
+#risk_trends{
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 70%;
+}
+#mutual_fund_rec {
+margin-left: 35px;
+margin-right: 35px;
+font-size: 0.9em;
+text-align: center;
+padding: 25px;
+background-color: white;
+border: 1px solid;
+border-color: #e2e2e2;
+border-radius: 5px;
+box-shadow: 0px 0px 5px 3px #e2e2e2;
+}
+#mf_recs{
+padding: 25px;
+}
+
+th,td{
+border: 1px solid white;
+}
